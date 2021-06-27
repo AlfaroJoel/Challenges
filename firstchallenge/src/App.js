@@ -10,7 +10,7 @@ class App extends Component {
     this.state = { balance: [] };
   }
 
-  componentDidMount() {
+  updateRecord() {
       fetch("http://localhost:4000/")
           .then((response) => (
               response.json()
@@ -19,8 +19,11 @@ class App extends Component {
               this.setState({
                   balance: recurso
               })
-              console.log(recurso)
           })
+  }
+
+  componentDidMount() {
+    this.updateRecord();
   }
 
   render() {
@@ -29,7 +32,7 @@ class App extends Component {
         <div className="App">
           <Balance balance={this.state.balance}></Balance>
           <Records records={this.state.balance}></Records>
-          <FormRecord></FormRecord>
+          <FormRecord update={this.updateRecord.bind(this)}></FormRecord>
         </div>
       )
     }else{
