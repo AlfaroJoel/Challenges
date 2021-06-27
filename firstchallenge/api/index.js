@@ -52,6 +52,11 @@ app.post('/add', (req, res) => {
     const customObj = {
         concept: req.body.concept,
         amount: req.body.amount,
+        day: req.body.day
     }
 
+    connection.query(sql, customObj, error => {
+        if(error) throw error;
+        res.send('Create ok');
+    })
 })
