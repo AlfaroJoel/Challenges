@@ -1,0 +1,25 @@
+.record{
+    width: 100%;
+    min-height: 60px;
+    margin: 5px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    align-items: center;
+    border-bottom: 1px solid #fff;
+}
+
+.record__amount{
+    justify-self: center;
+}
+
+.record__more{
+    justify-self: end;
+}
+
+.red{
+    color: red;
+}
+
+.green{
+    color: green;
+}

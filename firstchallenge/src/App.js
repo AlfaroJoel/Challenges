@@ -29,16 +29,16 @@ class App extends Component {
   render() {
     if(this.state.balance.length > 0) {
       return(
-        <div className="App">
+        <div className="app">
           <Balance balance={this.state.balance}></Balance>
-          <Records records={this.state.balance}></Records>
           <FormRecord update={this.updateRecord.bind(this)}></FormRecord>
+          <Records records={this.state.balance}></Records>
         </div>
       )
     }else{
       return(
-        <p>
-          Cargando...
+        <p className='load'>
+          Loading...
         </p>
       )
     }

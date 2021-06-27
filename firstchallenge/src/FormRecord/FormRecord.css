@@ -1,0 +1,35 @@
+.form-record{
+    width: 100%;
+    margin: 10px 0;
+    background: #6E7A93;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.form-record input{
+    margin: .5em 0;
+    font-size: .9em;
+    padding: 0 10px;
+    outline: none;
+    border: 1px solid #212633;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.form__div input{
+    width: 45%;
+}
+.form__concept{
+    height: 30px;
+}
+.form__div{
+    display: flex;
+    justify-content: space-between;
+}
+.form__btn{
+    padding: 3px 15px;
+    background: #d5d5d5;
+    border: 1px solid rgba(0, 0, 0, 0.685);
+    font-weight: 500;
+    border-radius: 5px;
+}

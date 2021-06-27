@@ -49,14 +49,16 @@ class FormRecord extends Component {
 
     render() {
         return(
-            <div className='FormRecord'>
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                    <input type='text' name='concept' placeholder='Concept' onChange={this.conceptChange.bind(this)}></input>
-                    <input type='number' name='amount' placeholder='Amount' onChange={this.amountChange.bind(this)}></input>
-                    <input type='Date' name='day' onChange={this.dayChange.bind(this)}></input>
-                    <button type='submit'>Save</button>
+            <>
+                <form  className='form-record' onSubmit={this.handleSubmit.bind(this)}>
+                    <div className='form__div'>
+                        <input type='number' name='amount' placeholder='Amount' onChange={this.amountChange.bind(this)}></input>
+                        <input type='Date' name='day' onChange={this.dayChange.bind(this)}></input>
+                    </div>
+                    <input className='form__concept' type='text' name='concept' placeholder='Concept' onChange={this.conceptChange.bind(this)}></input>
+                    <button className='form__btn' type='submit'>Save</button>
                 </form>
-            </div>
+            </>
         )
     }
 }

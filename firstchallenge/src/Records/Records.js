@@ -10,11 +10,10 @@ class Records extends Component {
     render(){
         return(
             <div className='records'>
-                <tr>
-                    <th>ID</th>
-                    <th>Concept</th>
-                    <th>Amount</th>
+                <tr className='records__th'>
                     <th>Date</th>
+                    <th>Amount</th>
+                    <th>More</th>
                 </tr>
                 <div>
                     {
