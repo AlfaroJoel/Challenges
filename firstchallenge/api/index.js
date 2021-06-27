@@ -38,11 +38,11 @@ app.get('/', (req, res)=>{
 
 app.delete('/delete/:id',(req, res) =>{
     const id = req.params.id;
-    const sql = `SELECT * FROM history WHERE ID = ${id}`
+    const sql = `DELETE FROM history WHERE ID = ${id}`
 
     connection.query(sql, (err, results, fields) => {
         if(err) throw err;
-        res.send(results);
+        res.send('Delete ok');
     });
 })
 
@@ -58,5 +58,17 @@ app.post('/add', (req, res) => {
     connection.query(sql, customObj, error => {
         if(error) throw error;
         res.send('Create ok');
+    })
+})
+
+app.put('/update/:id', (req, res) => {
+    const id = req.params.id;
+    const { concept, amount, day } = req.body;
+
+    const sql = `UPDATE history SET concept = '${concept}', amount = ${amount}, day = ${day} WHERE ID = ${id}`
+
+    connection.query(sql, error => {
+        if(error) throw error;
+        res.send('Update ok');
     })
 })

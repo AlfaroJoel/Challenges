@@ -1,23 +1,44 @@
 import React, { Component } from "react";
+import Popup from "../Popup/Popup";
 
 import "./Record.css";
 
 class Record extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            visible: false
+        }
     }
+
+    popupOn() {
+        this.setState({
+            visible: !this.state.visible
+        })
+    }
+
     render() {
         return (
             <tr className="record">
                 <td className="record__day">
                     {this.props.info.day.slice(5, 10)}
                 </td>
-                <td className={this.props.info.amount > 0? 'record__amount green' : 'record__amount red'}>
-                    {this.props.info.amount > 0 ? '$' + this.props.info.amount : '- $' + Math.abs(this.props.info.amount)}</td>
+                <td
+                    className={
+                        this.props.info.amount > 0
+                            ? "record__amount green"
+                            : "record__amount red"
+                    }
+                >
+                    {this.props.info.amount > 0
+                        ? "$" + this.props.info.amount
+                        : "- $" + Math.abs(this.props.info.amount)}
+                </td>
                 <td className="record__more">
                     <svg
-                        width="35"
-                        height="7"
+                        onClick={this.popupOn.bind(this)}
+                        width="40"
+                        height="8"
                         viewBox="0 0 20 6"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -28,6 +49,8 @@ class Record extends Component {
                         />
                     </svg>
                 </td>
+                {this.state.visible && <Popup record={this.props.info}></Popup>}
+                
             </tr>
         );
     }

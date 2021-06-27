@@ -6,6 +6,7 @@
     grid-template-columns: repeat(3, 33%);
     align-items: center;
     border-bottom: 1px solid #fff;
+    font-size: 1.2em;
 }
 
 .record__amount{
@@ -14,6 +15,7 @@
 
 .record__more{
     justify-self: end;
+    cursor: pointer;
 }
 
 .red{

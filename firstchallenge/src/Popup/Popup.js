@@ -1,3 +1,99 @@
+import React, { Component } from "react";
+
+import "./Popup.css";
+
+class Popup extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            concept: "",
+            amount: 0,
+            day: 1999,
+        };
+    }
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            let config = {
+                method: "PUT",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(this.state),
+            };
+            let res = await fetch("http://localhost:4000/update", config);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    conceptChange(e) {
+        this.setState({
+            concept: e.target.value,
+        });
+    }
+    amountChange(e) {
+        this.setState({
+            amount: e.target.value,
+        });
+    }
+    dayChange(e) {
+        this.setState({
+            day: e.target.value,
+        });
+    }
+
+    render() {
+        return (
+            <div className="popup">
+                <svg
+                    width="26"
+                    height="26"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M2 2L24 24M2 24L24 2L2 24Z"
+                        stroke="black"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+
+                <div className="form__div">
+                    <input
+                        type="number"
+                        name="amount"
+                        placeholder="Amount"
+                        onChange={this.amountChange.bind(this)}
+                    ></input>
+                    <input
+                        type="Date"
+                        name="day"
+                        onChange={this.dayChange.bind(this)}
+                    ></input>
+                </div>
+                <input
+                    className="form__concept"
+                    type="text"
+                    name="concept"
+                    placeholder="Concept"
+                    onChange={this.conceptChange.bind(this)}
+                ></input>
+                <button className="form__btn" type="submit">
+                    Save
+                </button>
+            </div>
+        );
+    }
+}
+
+export default Popup;
+
 /* <svg
                         width="20"
                         height="20"
