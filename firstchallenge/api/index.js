@@ -1,12 +1,14 @@
 const express = require('express');
+var cors = require('cors');
 const mysql = require('mysql');
 
 const bodyParser = require('body-parser');
 
-const PORT = 3050;
+const PORT = 4000;
 
 const app = express();
 
+app.use(cors())
 app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
@@ -26,18 +28,30 @@ connection.connect(error => {
 app.listen(PORT, () => console.log(`Server Running Port: ${PORT}`));
 
 app.get('/', (req, res)=>{
-    connection.query('SELECT * from history', (err, results, fields) => {
+    const sql = 'SELECT * from history';
+
+    connection.query(sql, (err, results, fields) => {
         if(err) throw err;
         res.send(results);
     });
 });
 
 app.delete('/delete/:id',(req, res) =>{
-    let id = req.params.id;
+    const id = req.params.id;
+    const sql = `SELECT * FROM history WHERE ID = ${id}`
 
-    connection.query(`SELECT * FROM history WHERE ID = ${id}`, (err, results, fields) => {
+    connection.query(sql, (err, results, fields) => {
         if(err) throw err;
         res.send(results);
     });
+})
 
-} )
+app.post('/add', (req, res) => {
+    const sql = 'INSERT INTO history SET ?';
+
+    const customObj = {
+        concept: req.body.concept,
+        amount: req.body.amount,
+    }
+
+})
