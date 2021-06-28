@@ -1,8 +1,37 @@
 .popup{
+    position: relative;
+    top: 0;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.popup__info{
+    display: inline-flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.popup input{
+    margin: .5em 0;
+    font-size: .9em;
+    padding: 0 10px;
+    outline: none;
+    border: 1px solid #212633;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.popup__delete{
     position: absolute;
     top: 0;
-    width: 300px;
-    height: 300px;
-    background: red;
-    z-index: 99;
+    right: 5px;
+    cursor: pointer;
+}
+.form__btn{
+    padding: 3px 15px;
+    background: #d5d5d5;
+    border: 1px solid rgba(0, 0, 0, 0.685);
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
 }

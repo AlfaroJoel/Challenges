@@ -32,7 +32,7 @@ class App extends Component {
         <div className="app">
           <Balance balance={this.state.balance}></Balance>
           <FormRecord update={this.updateRecord.bind(this)}></FormRecord>
-          <Records records={this.state.balance}></Records>
+          <Records records={this.state.balance} update={this.updateRecord.bind(this)}></Records>
         </div>
       )
     }else{

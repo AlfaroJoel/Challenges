@@ -17,7 +17,7 @@ class Records extends Component {
                 </tr>
                 <div>
                     {this.props.records.map((record) => (
-                        <Record key={record.ID} info={record}></Record>
+                        <Record key={record.ID} info={record} update={this.props.update}></Record>
                     ))}
                 </div>
             </div>

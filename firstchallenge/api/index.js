@@ -63,7 +63,9 @@ app.post('/add', (req, res) => {
 
 app.put('/update/:id', (req, res) => {
     const id = req.params.id;
-    const { concept, amount, day } = req.body;
+    let { concept, amount, day } = req.body;
+
+    day = day.replace(/-/g, '');
 
     const sql = `UPDATE history SET concept = '${concept}', amount = ${amount}, day = ${day} WHERE ID = ${id}`
 
